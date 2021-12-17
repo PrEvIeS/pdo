@@ -1,3 +1,0 @@
-[submodule "bitrix"]
-	path = bitrix
-	url = git@gitlab.digital-sector.ru:bitrix/bitrix.git
