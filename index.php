@@ -1,17 +1,19 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Main Page");
-?>
-<?php
+/**
+ * @global $APPLICATION
+ */
+$APPLICATION->SetTitle("Регистрационная форма");
+
 $APPLICATION->IncludeComponent(
     "project:regForm",
     "",
     Array(
         "CACHE_TIME" => "3600",
-        "CACHE_TYPE" => "A",
-        "IBLOCK_ID" => '',
-        "IBLOCK_TYPE" => '',
+        "CACHE_TYPE" => "N",
+        "IBLOCK_CODE" => 'study_programs',
+        "IBLOCK_TYPE" => 'educational_programs',
     )
 );
-?>
-<?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
+
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

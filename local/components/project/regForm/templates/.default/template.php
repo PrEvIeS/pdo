@@ -1,5 +1,5 @@
 <?php
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -7,9 +7,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
  * variables
  * @var array $arResult
  * @var array $arParams
+ * @global $APPLICATION
  */
 
 use \Bitrix\Main\Localization\Loc as Loc;
+
 Loc::loadMessages(__FILE__);
 ?>
 <div class="form-wrap">
@@ -110,16 +112,20 @@ Loc::loadMessages(__FILE__);
             <label for="mail" class="form-label">Адрес электронной почты<sup>*</sup></label>
             <input type="email" class="form-control" id="mail" required>
         </div>
-
+        <div class="mb-3">
+            <label for="education" class="form-label">Вид программы<sup>*</sup></label>
+            <select id="PROGRAMM" class="form-select" required>
+                <option value=""></option>
+                <option value="development">повышение квалификации</option>
+                <option value="retraining">профессиональная переподготовка</option>
+            </select>
+        </div>
         <div class="row">
             <div class="col">
                 <div class="mb-3">
                     <label for="course" class="form-label">Выберите курс<sup>*</sup></label>
                     <select id="course" class="form-select" required>
                         <option value=""></option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
                     </select>
                 </div>
             </div>
@@ -128,21 +134,13 @@ Loc::loadMessages(__FILE__);
                     <label for="period" class="form-label">Период обучения<sup>*</sup></label>
                     <select id="period" class="form-select" required>
                         <option value=""></option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
                     </select>
                 </div>
             </div>
         </div>
-
-
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <span data-bs-toggle="modal" data-bs-target="#exampleModal">Распечатайте <a href="#" target="_blank">файл «Заявление»</a> (ссылка), подпишите, отсканируйте и прикрепите в поле «Заявление на зачисление»</span>
-
+        <div class="mb-3">
+            <span>Распечатайте <a href="#">файл «Заявление»</a> (ссылка), подпишите, отсканируйте и прикрепите в поле «Заявление на зачисление»</span>
         </div>
-
         <div class="mb-3">
             <label for="addFile" class="form-label">Заявление на зачисление<sup>*</sup></label>
             <input class="form-control" id="addFile" type="file">
@@ -166,51 +164,22 @@ Loc::loadMessages(__FILE__);
             <label for="addFileSnils" class="form-label">СНИЛС<sup>*</sup></label>
             <input class="form-control" id="addFileSnils" type="file">
         </div>
-
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:main.userconsent.request",
+            ".default",
+            array(
+                "AUTO_SAVE" => "Y",
+                "ID" => "1",
+                "IS_CHECKED" => "Y",
+                "REPLACE" => array(
+                    'button_caption' => 'Отправить',
+                    'fields' => array('Email', 'Телефон', 'Имя')
+                ),
+                "IS_LOADED" => "Y",
+                "COMPONENT_TEMPLATE" => ".default"
+            ),
+            false
+        ); ?>
         <button type="submit" class="btn btn-success">ОТПРАВИТЬ РЕГИСТРАЦИОННУЮ ФОРМУ</button>
     </form>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div>Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» от 27.07.2006 года
-                    свободно, своей волей и в своем интересе выражаю свое безусловное согласие на обработку моих
-                    персональных данных , зарегистрированным в соответствии с законодательством РФ по адресу:<br> (далее
-                    по тексту - Оператор).<br>Персональные данные&nbsp;- любая информация, относящаяся к определенному
-                    или определяемому на основании такой информации&nbsp;физическому лицу.<br>Настоящее Согласие выдано
-                    мною на обработку следующих персональных данных:<br>- Фамилия;<br>- Имя;<br>- Отчество;<br>- Число
-                    полных лет;<br>- Гражданство;<br>- СНИЛС;<br>- Уровень образования;<br>- Специальность по
-                    диплому;<br>- Серия, номер и дата выдачи диплома;<br>- ;<br>- Место работы;<br>- Принадлежность
-                    места работы к сектору АПК;<br>- Занимаемая должность;<br>- Стаж работы;<br>- Адрес;<br>-
-                    Телефон;<br>- E-mail;<br>- ;<br>- Вид программы;<br>- ;<br>- Заявление;<br>- Диплом об
-                    образовании;<br>- СНИЛС;<br>- Свидетельство о браке.<br><br>Согласие дано Оператору для совершения
-                    следующих действий с моими персональными данными с использованием средств автоматизации и/или без
-                    использования таких средств: сбор, систематизация, накопление, хранение, уточнение (обновление,
-                    изменение), использование, обезличивание, а также осуществление любых иных действий, предусмотренных
-                    действующим законодательством РФ как неавтоматизированными, так и автоматизированными способами.<br>Данное
-                    согласие дается Оператору для обработки моих персональных данных в следующих целях:<br>-
-                    предоставление мне услуг/работ;<br>- направление в мой адрес уведомлений, касающихся предоставляемых
-                    услуг/работ;<br>- подготовка и направление ответов на мои запросы;<br>- направление в мой адрес
-                    информации, в том числе рекламной, о мероприятиях/товарах/услугах/работах Оператора.<br><br>Настоящее
-                    согласие действует до момента его отзыва путем направления соответствующего уведомления на
-                    электронный адрес d.shuvalov@digital-sector.ru. В случае отзыва мною согласия на обработку
-                    персональных данных Оператор вправе продолжить обработку персональных данных без моего согласия при
-                    наличии оснований, указанных в пунктах 2 – 11 части 1 статьи 6, части 2 статьи 10 и части 2 статьи
-                    11 Федерального закона №152-ФЗ «О персональных данных» от 27.07.2006 г.
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary js-checkboxCheck" data-bs-dismiss="modal">Принимаю</button>
-                <button type="button" class="btn btn-secondary js-checkboxNotCheck" data-bs-dismiss="modal">Не
-                    принимаю
-                </button>
-            </div>
-        </div>
-    </div>
 </div>
