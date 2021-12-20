@@ -26,7 +26,6 @@ try {
         foreach ($period['PROPERTY_PERIOD_VALUE'] as $item){
             $data[] = $item;
         }
-
     }
     $response = new \Bitrix\Main\Engine\Response\Json();
     $response->setData($data);

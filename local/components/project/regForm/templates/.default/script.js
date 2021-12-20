@@ -30,11 +30,22 @@ $(document).ready(function () {
             $.each(response, function (key, value) {
                 $('select[id=period]').append(
                     $('<option>', {
-                        value: key,
+                        value: value,
                         text: value,
                     })
                 );
             })
         });
+    });
+
+    $(document).on('click', '#printStatement', function (e) {
+
+        var request = {
+            type: $('#PROGRAMM').val(),
+            course: $('#course').val(),
+            period: $('#period').val(),
+        };
+        window.open('/ajax/getStatement.php?type=' + request.type + '&course=' + request.course + '&period=' + request.period, '_blank');
+        window.focus();
     });
 });

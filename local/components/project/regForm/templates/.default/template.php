@@ -15,9 +15,9 @@ use \Bitrix\Main\Localization\Loc as Loc;
 Loc::loadMessages(__FILE__);
 ?>
 <div class="form-wrap">
-    <form class="form">
+    <form class="form" method="post" action="/ajax/register.php">
         <div class="form-head">
-            <h3>Форма</h3>
+            <h3>Форма записи на курсы допольнительного образования</h3>
         </div>
         <div class="mb-3">
             <label for="surname" class="form-label">Фамилия<sup>*</sup></label>
@@ -85,7 +85,11 @@ Loc::loadMessages(__FILE__);
 
         <div class="mb-3">
             <label for="affiliation" class="form-label">Принадлежность места работы к сектору АПК<sup>*</sup></label>
-            <input type="text" class="form-control" id="affiliation" required>
+            <select id="affiliation" class="form-select" required>
+                <option value=""></option>
+                <option value="true">Да</option>
+                <option value="false">Нет</option>
+            </select>
         </div>
 
         <div class="mb-3">
@@ -139,7 +143,7 @@ Loc::loadMessages(__FILE__);
             </div>
         </div>
         <div class="mb-3">
-            <span>Распечатайте <a href="#">файл «Заявление»</a> (ссылка), подпишите, отсканируйте и прикрепите в поле «Заявление на зачисление»</span>
+            <span>Распечатайте <a href="#" id="printStatement" >файл «Заявление»</a> (ссылка), подпишите, отсканируйте и прикрепите в поле «Заявление на зачисление»</span>
         </div>
         <div class="mb-3">
             <label for="addFile" class="form-label">Заявление на зачисление<sup>*</sup></label>
@@ -155,7 +159,7 @@ Loc::loadMessages(__FILE__);
         <div class="mb-3">
             <p class="form-text">Если у вас была смена фамилии, то необходимо отсканировать документ, подтверждающий это
                 и прикрепить в поле «Свидетельство о браке»</p>
-            <label for="addFileBrak" class="form-label">Свидетельство о браке<sup>*</sup></label>
+            <label for="addFileBrak" class="form-label">Свидетельство о браке</label>
             <input class="form-control" id="addFileBrak" type="file">
         </div>
 
