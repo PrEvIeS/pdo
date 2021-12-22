@@ -13,6 +13,8 @@ upload.tar.bz2
 project.gitlab-ci.yml
 .php_cs.cache
 composer.lock
+bitrix
+upload
 bitrix/cache/*
 bitrix/managed_cache/*
 bitrix/*.log
