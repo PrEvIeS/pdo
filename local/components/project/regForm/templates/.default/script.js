@@ -37,7 +37,25 @@ $(document).ready(function () {
             })
         });
     });
-
+    $('.form').submit(function (event) {
+        event.preventDefault();
+        var $form = $(this);
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            type: $form.attr('method'),
+            url: $form.attr('action'),
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+        }).done(function (response) {
+            alert('Вы успешно зарегистрированы!');
+            window.location.reload();
+        }).fail(function (jqXHR, textStatus, error) {
+            alert(jqXHR.responseJSON.message);
+        });
+    });
     $(document).on('click', '#printStatement', function (e) {
 
         var request = {
