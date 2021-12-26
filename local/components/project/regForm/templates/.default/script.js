@@ -18,6 +18,17 @@ $(document).ready(function () {
             })
         });
     });
+    $('#date-of-birth').datepicker({
+        format: "dd.mm.yyyy",
+        language: "ru"
+    });
+    $('#date-of-issue').datepicker({
+        format: "dd.mm.yyyy",
+        language: "ru"
+    });
+    jQuery(function($){
+        $(".phone_mask").mask("+7(999)999-99-99");
+    });
     $(document).on('change', '#course', function (e) {
         var value = $(this).val();
         $.ajax({

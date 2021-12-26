@@ -33,7 +33,7 @@ Loc::loadMessages(__FILE__);
         </div>
         <div class="mb-3">
             <label for="date-of-birth" class="form-label">Дата рождения<sup>*</sup></label>
-            <input type="text" class="form-control" id="date-of-birth" name="UF_BIRTHDAY" placeholder="01.01.1999"required>
+            <input  class="form-control" id="date-of-birth" name="UF_BIRTHDAY" placeholder="Дата рождения" required>
         </div>
         <div class="mb-3">
             <label for="number-of-years" class="form-label">Число полных лет<sup>*</sup></label>
@@ -113,7 +113,7 @@ Loc::loadMessages(__FILE__);
 
         <div class="mb-3">
             <label for="phone" class="form-label">Телефон<sup>*</sup></label>
-            <input type="tel" class="form-control" id="phone" name="UF_PHONE" required>
+            <input type="text" placeholder="Телефон" class="phone_mask form-control" name="UF_PHONE" required>
         </div>
 
         <div class="mb-3">
