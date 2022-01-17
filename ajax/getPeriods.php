@@ -21,12 +21,15 @@ try {
         'PROPERTY_PERIOD',
         'NAME',
     ];
+
     $periods = CIBlockElement::GetList([], $filter, false, false, $select);
     while ($period = $periods->Fetch()) {
+        
         foreach ($period['PROPERTY_PERIOD_VALUE'] as $item){
             $data[] = $item;
         }
     }
+
     $response = new \Bitrix\Main\Engine\Response\Json();
     $response->setData($data);
     $response->setStatus(200);
