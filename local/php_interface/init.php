@@ -9,4 +9,5 @@ require(__DIR__ . "/include/functions.php");
 
 // Composer
 require(__DIR__ . "/vendor/autoload.php");
+require(__DIR__ . "/classes/UserFieldEnumTable.php");
 
