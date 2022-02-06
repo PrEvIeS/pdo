@@ -4,7 +4,6 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
  * @global $APPLICATION
  */
 $APPLICATION->SetTitle("Регистрационная форма");
-
 $APPLICATION->IncludeComponent(
     "project:regForm",
     "",

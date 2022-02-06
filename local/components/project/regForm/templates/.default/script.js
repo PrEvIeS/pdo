@@ -1,6 +1,8 @@
 $(document).ready(function () {
     $(document).on('change', '#PROGRAMM', function (e) {
         var value = $(this).val();
+        $('#course').empty();
+        $('#period').empty();
         $.ajax({
             url: '/ajax/getCourses.php',
             method: 'POST',
@@ -30,6 +32,7 @@ $(document).ready(function () {
         $(".phone_mask").mask("+7(999)999-99-99");
     });
     $(document).on('change', '#course', function (e) {
+        $('#period').empty();
         var value = $(this).val();
         $.ajax({
             url: '/ajax/getPeriods.php',
