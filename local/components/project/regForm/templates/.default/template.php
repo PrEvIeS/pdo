@@ -17,7 +17,7 @@ Loc::loadMessages(__FILE__);
 <div class="form-wrap">
     <form class="form" method="post" action="/ajax/register.php">
         <div class="form-head">
-            <h3>Форма записи на курсы допольнительного образования</h3>
+            <h3>Форма записи на курсы дополнительного образования ФГБОУ ВО Кубанского ГАУ</h3>
         </div>
         <div class="mb-3">
             <label for="surname" class="form-label">Фамилия<sup>*</sup></label>
