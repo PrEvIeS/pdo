@@ -32,11 +32,10 @@ if (!$USER->IsAuthorized()){
     <tbody>
     <?php foreach ($arResult['STUDENTS'] as $key => $student):?>
     <tr>
-        <input type="hidden" id="studentId" value="<?= $student['ID']?>">
         <th scope="row"><?= $key + 1?></th>
         <td><?= $student['NAME']?></td>
         <td><?= $student['PROGRAMM']?></td>
-        <td><a href="#" id="printCard">Карточка</a> <a href="#" id="printStatement">Заявление</a></td>
+        <td><a href="<?= $student['ID']?>" id="printCard">Карточка</a> <a href="<?= $student['ID']?>" id="printStatement">Заявление</a></td>
     </tr>
     <?php endforeach;?>
     </tbody>
