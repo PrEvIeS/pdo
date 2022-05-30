@@ -5,7 +5,7 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
  */
 $APPLICATION->SetTitle("Регистрационная форма");
 $APPLICATION->IncludeComponent(
-    "project:regForm",
+    "project:reg.2030.form",
     "",
     Array(
         "CACHE_TIME" => "3600",

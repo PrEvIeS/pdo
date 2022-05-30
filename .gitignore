@@ -2,8 +2,10 @@
 /.composer
 /shared
 .idea
+_test
 local/php_interface/vendor
 .env
+.git
 movetoclient.sh                          
 movetoclientwithdump.sh                                   
 makemysqldump.sh
